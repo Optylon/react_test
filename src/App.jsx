@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import UserInformation from './UserInformation';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
-    this.state = { user: {} }
+    this.state = { user: {} };
   }
 
   getUserInformation() {
@@ -19,6 +18,9 @@ class App extends Component {
          fetching resources (including across the network).
        2) Maybe you want to update the state here.
     */
+    const self = this;
+    const { name } = this.state.user;
+    return { name, self };
   }
 
   render() {
@@ -29,14 +31,12 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit <code>src/App.jsx</code> and save to reload.
         </p>
         <div className="App-intro">
           <hr />
           <p>Click on the button to fetch the user information</p>
-          <button onClick={this.getUserInformation.bind(this)}>
-            Click me
-          </button>
+          <button onClick={this.getUserInformation()}>Click me</button>
         </div>
         <UserInformation />
       </div>
